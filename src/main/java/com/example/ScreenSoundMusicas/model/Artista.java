@@ -53,4 +53,7 @@ public class Artista {
         return genero;
     }
 
+    public List<Musica> getMusicas() {
+        return musicas;
+    }
 }

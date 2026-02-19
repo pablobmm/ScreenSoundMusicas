@@ -14,17 +14,23 @@ public class Musica {
     private String titulo;
 
     @Column(nullable = false)
-    private Integer album;
+    private String album;
 
     @Column(nullable = false)
-    private String genero;
-
-    @Column(nullable = false)
-    private LocalDate dataLancamento;
+    private Integer anoLancamento;
 
     @ManyToOne
     @JoinColumn(name = "artista_id")
     private Artista artista;
+
+    public Musica() {}
+
+    public Musica(String titulo, String album, Integer anoLancamento, Artista artista) {
+        this.titulo = titulo;
+        this.album = album;
+        this.anoLancamento = anoLancamento;
+        this.artista = artista;
+    }
 
     public Long getId() {
         return id;
@@ -34,16 +40,8 @@ public class Musica {
         return titulo;
     }
 
-    public Integer getAlbum() {
-        return album;
-    }
-
-    public String getGenero() {
-        return genero;
-    }
-
-    public LocalDate getDataLancamento() {
-        return dataLancamento;
+    public Integer getAnoLancamento() {
+        return anoLancamento;
     }
 
     public Artista getArtista() {
