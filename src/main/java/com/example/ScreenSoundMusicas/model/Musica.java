@@ -48,4 +48,14 @@ public class Musica {
         return artista;
     }
 
+    @Override
+    public String toString() {
+        return "Musica{" +
+                "id=" + id +
+                ", titulo='" + titulo + '\'' +
+                ", album='" + album + '\'' +
+                ", anoLancamento=" + anoLancamento +
+                ", artista=" + artista +
+                '}';
+    }
 }

@@ -56,4 +56,9 @@ public class Artista {
     public List<Musica> getMusicas() {
         return musicas;
     }
+
+    @Override
+    public String toString() {
+        return nome;
+    }
 }

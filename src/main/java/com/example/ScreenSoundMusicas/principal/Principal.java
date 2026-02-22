@@ -8,14 +8,14 @@ import com.example.ScreenSoundMusicas.repository.MusicRepository;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Optional;
-import java.util.Scanner;
+import java.util.*;
 
 public class Principal {
 
     private Scanner leitura = new Scanner(System.in);
     private final MusicRepository musicaRepositorio;
     private final ArtistaRepository artistaRepositorio;
+    private List<Musica> musicas = new ArrayList<>();
 
     public Principal(MusicRepository musicaRepositorio, ArtistaRepository artistaRepositorio) {
         this.musicaRepositorio = musicaRepositorio;
@@ -101,7 +101,9 @@ public class Principal {
     }
 
     private void listarMusicas(){
-
+        musicas = musicaRepositorio.findAll();
+        musicas.stream().sorted(Comparator.comparing(Musica::getTitulo))
+                .forEach(System.out::println);
     }
 
     private void buscarMusicaPorArtista(){
