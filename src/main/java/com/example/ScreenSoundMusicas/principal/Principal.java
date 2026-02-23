@@ -107,7 +107,10 @@ public class Principal {
     }
 
     private void buscarMusicaPorArtista(){
-
+        System.out.println("Digite o nome da artista: ");
+        var nomeArtista = leitura.nextLine();
+        List<Musica> musica = musicaRepositorio.findByArtistaNomeContainingIgnoreCase(nomeArtista);
+        musica.forEach(System.out::println);
     }
 
     private void dadosArtista(){
