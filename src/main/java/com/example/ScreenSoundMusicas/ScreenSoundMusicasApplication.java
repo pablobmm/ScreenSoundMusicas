@@ -3,6 +3,7 @@ package com.example.ScreenSoundMusicas;
 import com.example.ScreenSoundMusicas.principal.Principal;
 import com.example.ScreenSoundMusicas.repository.ArtistaRepository;
 import com.example.ScreenSoundMusicas.repository.MusicRepository;
+import com.example.ScreenSoundMusicas.service.ConsultaArtista;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -15,6 +16,8 @@ public class ScreenSoundMusicasApplication implements CommandLineRunner {
 	private MusicRepository musicaRepositorio;
 	@Autowired
 	private ArtistaRepository artistaRepositorio;
+	@Autowired
+	private ConsultaArtista consulta;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ScreenSoundMusicasApplication.class, args);
@@ -22,7 +25,7 @@ public class ScreenSoundMusicasApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Principal principal = new Principal(musicaRepositorio,artistaRepositorio);
+		Principal principal = new Principal(musicaRepositorio,artistaRepositorio,consulta);
 		principal.exibeMenu();
 	}
 

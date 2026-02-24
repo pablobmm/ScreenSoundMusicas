@@ -5,9 +5,7 @@ import com.example.ScreenSoundMusicas.model.Musica;
 import com.example.ScreenSoundMusicas.model.TipoArtista;
 import com.example.ScreenSoundMusicas.repository.ArtistaRepository;
 import com.example.ScreenSoundMusicas.repository.MusicRepository;
-
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import com.example.ScreenSoundMusicas.service.ConsultaArtista;
 import java.util.*;
 
 public class Principal {
@@ -16,10 +14,11 @@ public class Principal {
     private final MusicRepository musicaRepositorio;
     private final ArtistaRepository artistaRepositorio;
     private List<Musica> musicas = new ArrayList<>();
-
-    public Principal(MusicRepository musicaRepositorio, ArtistaRepository artistaRepositorio) {
+    private ConsultaArtista consulta;
+    public Principal(MusicRepository musicaRepositorio, ArtistaRepository artistaRepositorio, ConsultaArtista consulta) {
         this.musicaRepositorio = musicaRepositorio;
         this.artistaRepositorio = artistaRepositorio;
+        this.consulta = consulta;
     }
 
     public void exibeMenu() {
@@ -113,7 +112,20 @@ public class Principal {
         musica.forEach(System.out::println);
     }
 
-    private void dadosArtista(){
-
+    private void dadosArtista() {
+        System.out.println("Pesquisar dados sobre qual artista? ");
+        var nome = leitura.nextLine();
+        var json = consulta.obterDadosArtista(nome);
+        var dados = consulta.extrairDadosCompletos(json);
+        if (dados != null) {
+            System.out.println("\n--- INFORMAÇÕES DO ARTISTA ---");
+            System.out.println("Gênero: " + (dados.genero() != null ? dados.genero() : "N/A"));
+            System.out.println("Início: " + (dados.anoInicio() != null ? dados.anoInicio() : "N/A"));
+            System.out.println("\nRESUMO:");
+            System.out.println(dados.biografia());
+            System.out.println("------------------------------\n");
+        } else {
+            System.out.println("Artista não encontrado!");
+        }
     }
 }
