@@ -1,6 +1,6 @@
 # ScreenSound 🎵 - Catálogo Musical
 
-O **ScreenSound** é uma aplicação Java robusta desenvolvida para gerenciar um catálogo completo de artistas e suas discografias. O projeto foi construído para consolidar conhecimentos em persistência de dados, consumo de APIs REST e boas práticas de Programação Orientada a Objetos.
+O **ScreenSound** é uma aplicação Java desenvolvida para gerenciar um catálogo completo de artistas e suas discografias. O projeto foi construído para consolidar conhecimentos em persistência de dados, consumo de APIs REST e boas práticas de Programação Orientada a Objetos.
 
 ## 🚀 Funcionalidades
 
